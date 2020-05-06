@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Link, Typography, Box } from '@material-ui/core';
 import '../App.css';
 
-function Article(props) {
+const Article = props => {
 
     var imageUrl = props.data.urlToImage;
     if (imageUrl === "") {

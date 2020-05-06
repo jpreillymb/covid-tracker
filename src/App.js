@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Header, TopStats, CurrentNews, CountrySelect, Footer} from './Components';
+import { Header, TopStats, CurrentNews, CovidChart, CountrySelect, Footer} from './Components';
 
 class App extends Component {
 
@@ -10,8 +10,9 @@ class App extends Component {
       <div className="Container" >
         <Header />
         <TopStats />
-        <CurrentNews />
         <CountrySelect />
+        <CovidChart />
+        <CurrentNews />
         <Footer />
       </div>
     )

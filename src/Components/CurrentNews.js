@@ -5,10 +5,11 @@ import { Article } from '.';
 import { Typography, ThemeProvider, Paper} from '@material-ui/core';
 import '../App.css';
 
-export const CurrentNews = (props) => {
+const CurrentNews = (props) => {
 
     useEffect(() => {
-        props.fetchNews()
+        // props.fetchNews()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if (props.loadingNews) {

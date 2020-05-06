@@ -4,7 +4,7 @@ import { MenuItem, FormHelperText, FormControl, Select} from '@material-ui/core'
 import { updateCurrentCountry } from '../Actions/countryActions';
 import '../App.css';
 
-export const CountrySelect = (props) => {
+const CountrySelect = (props) => {
 
     const handleChange = (event) => {
         const country = event.target.value;
