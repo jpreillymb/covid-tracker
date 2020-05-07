@@ -1,13 +1,27 @@
+body, html {
+  height: 100%;
+}
+
+.parallax {
+  background-image: url("/background.png");
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .Container{
   display:flex;
   align-items:center;
-  flex-direction:column;
-  padding: 1rem;
-}
-
-.header {
-  display: flexbox;
-  align-self:center;
+  text-align: center;
+  justify-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 2rem;
+  max-width: 60rem;
 }
 
 .article-image {
@@ -16,6 +30,10 @@
   align-self: flex-start;
   padding-right: 1rem;
   align-self: center;
+}
+
+.article-padding {
+  padding: 0.1rem;
 }
 
 .article-container {
@@ -35,24 +53,31 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-
 }
 
 .card-container {
-  padding: 1rem;
-  max-width: 50rem;
-  width: 80%;
+  padding: 2rem;
   display: flex;
+  width: 80%;
   flex-direction: row;
   text-align: center;
-  justify-items: stretch;
+  justify-items: auto;
   justify-content: space-between;
 }
 
+@media only screen and (max-width: 900px) {
+  .card-container {
+    flex-direction: column;
+    width: 90%;
+  }
+  .card-container-box {
+    padding: 1rem;
+  }
+}
+
 .news-container {
-  max-width: 50rem;
-  max-height: 10rem;
-  width: 80%; 
+  max-height: 18rem;
+  padding: 1rem;
   text-align: center;
   justify-items: center;
   justify-content: space-between;
@@ -69,22 +94,22 @@
 }
 
 .country-select {
-  width: 15rem;
+  width: 20rem;
   min-width: min-content;
   align-self: center;
 }
 
 
 .card-container-box {
-  flex-basis: 20%;  
+  flex-basis: 30%;  
 }
 
 .chart-container {
-  padding: 1rem;
-  max-width: 50rem;
-  width: 80%;
+  padding: 0.5rem;
+  width: 100%;
   display: flex;
   text-align: center;
+  align-items: center;
   justify-items: stretch;
   justify-content: space-between;
 }
@@ -109,13 +134,36 @@
   color: dimgrey;
 }
 
-.footer {
-  top: 5rem;
-  bottom: 0rem;
-  position: 'absolute';
-  scroll-padding-bottom: 10rem;
+.recent-news {
+  color: dimgrey;
+  padding: 1rem;
+  padding-top: 1.5rem;
 }
 
-.grow {
-  flexGrow: 1;
+.header {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.covid-logo{
+  position: absolute;;
+  bottom: auto;
+  left: 100px;
+  height: 100px;
+}
+
+.select-margin {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.footer {
+  color: dimgrey;
+  padding-top: 3rem;
 }

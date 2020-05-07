@@ -10,7 +10,7 @@ const Article = props => {
     }
    
     return (
-        <div>
+        <div className="article-padding">
             <Card>
                 <div className="article-container">
                     <img 

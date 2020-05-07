@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { MenuItem, FormHelperText, FormControl, Select} from '@material-ui/core';
+import { MenuItem, FormHelperText, FormControl, Select, Paper } from '@material-ui/core';
 import { updateCurrentCountry } from '../Actions/countryActions';
 import '../App.css';
 
@@ -30,20 +30,22 @@ const CountrySelect = (props) => {
 
     return (
         <div className="country-select-container">
-            <FormControl className="country-select">
-                <Select
-                    id="country-picker"
-                    value={props.currentCountry}
-                    onChange={handleChange}
-                    label="Country"
-                    >   
-                        <MenuItem value="Global">Global Totals</MenuItem>
-                        {props.data.Countries.map((country) =>
-                            <MenuItem key={country.Slug} value={country.Slug}>{country.Country}</MenuItem>
-                        )}
-                </Select>
-                <FormHelperText>Choose a country to view its data</FormHelperText>
-            </FormControl>
+            <Paper className="select-margin">
+                <FormControl className="country-select">
+                    <Select
+                        id="country-picker"
+                        value={props.currentCountry}
+                        onChange={handleChange}
+                        label="Country"
+                        >   
+                            <MenuItem value="Global">Global Totals</MenuItem>
+                            {props.data.Countries.map((country) =>
+                                <MenuItem key={country.Slug} value={country.Slug}>{country.Country}</MenuItem>
+                            )}
+                    </Select>
+                    <FormHelperText>Choose a country to view its data</FormHelperText>
+                </FormControl>
+            </Paper>
         </div>
     )
 }

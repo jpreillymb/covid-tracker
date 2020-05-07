@@ -1,7 +1,7 @@
 import { UPDATE_CURRENT_COUNTRY } from '../Actions/countryActions';
 
 const initialState = {
-    current: "Global"
+    current: "united-states"
 }
 
 export default function(state = initialState, action) {
