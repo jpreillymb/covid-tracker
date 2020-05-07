@@ -6,7 +6,7 @@ const Article = props => {
 
     var imageUrl = props.data.urlToImage;
     if (imageUrl === "") {
-        imageUrl = "/placeholder.png";
+        imageUrl = "placeholder.png";
     } else if (imageUrl.indexOf("https://") === -1) {
         imageUrl = imageUrl.replace("http://", "https://");
     }
