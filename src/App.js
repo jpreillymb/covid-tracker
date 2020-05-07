@@ -7,6 +7,7 @@ class App extends Component {
   render() {
    
     return (
+      <div className="parallax">
       <div className="Container" >
         <Header />
         <TopStats />
@@ -14,6 +15,7 @@ class App extends Component {
         <CovidChart />
         <CurrentNews />
         <Footer />
+      </div>
       </div>
     )
   }
