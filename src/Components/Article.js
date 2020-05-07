@@ -7,6 +7,14 @@ const Article = props => {
     var imageUrl = props.data.urlToImage;
     if (imageUrl === "") {
         imageUrl = "/placeholder.png";
+    } else if (imageUrl.indexOf("https://") === -1) {
+        imageUrl = imageUrl.replace("http://", "https://");
+    }
+
+    var webUrl = props.data.url;
+
+    if (webUrl.indexOf("https://") === -1) {
+        webUrl = webUrl.replace("http://", "https://");
     }
    
     return (
@@ -30,7 +38,7 @@ const Article = props => {
                                 {props.data.description}
                             </Box>
                         </Typography>
-                        <Link href={props.data.url}>
+                        <Link href={webUrl}>
                             <Typography component={'span'} color="primary">
                                 <Box fontSize={8} letterSpacing={1} lineHeight={1}>
                                     Click to Read More

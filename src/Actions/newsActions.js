@@ -16,7 +16,7 @@ export const fetchNewsBegin = () => ({
     payload: error
   });
   
-var newsUrl = 'http://newsapi.org/v2/top-headlines?' +
+var newsUrl = 'https://newsapi.org/v2/top-headlines?' +
   'q=COVID&' +
   'from=2020-05-05&' +
   'sortBy=publishedAt&' +
