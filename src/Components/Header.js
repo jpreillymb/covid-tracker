@@ -86,7 +86,7 @@ export const Header = (props) => {
             </div>
             <img 
                 className="covid-logo" 
-                src={process.env.PUBLIC_URL + 'covid19icon.png'}
+                src='covid19icon.png'
                 title='covid-19 icon'
                 alt=""
             />
