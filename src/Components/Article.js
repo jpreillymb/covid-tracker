@@ -8,6 +8,12 @@ const Article = props => {
     if (imageUrl === "") {
         imageUrl = "/placeholder.png";
     }
+
+    var webUrl = props.data.url;
+
+    if (webUrl.indexOf("https://") === -1) {
+        webUrl = webUrl.replace("http://", "https://");
+    }
    
     return (
         <div className="article-padding">
@@ -30,7 +36,7 @@ const Article = props => {
                                 {props.data.description}
                             </Box>
                         </Typography>
-                        <Link href={props.data.url}>
+                        <Link href={webUrl}>
                             <Typography component={'span'} color="primary">
                                 <Box fontSize={8} letterSpacing={1} lineHeight={1}>
                                     Click to Read More
