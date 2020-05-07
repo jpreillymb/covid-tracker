@@ -90,7 +90,7 @@ export const CovidChart = (props) => {
             return day.toDateString();
           }),
           datasets: [{
-            data: props.chartData.map((daily) => daily.Confimed - daily.Recovered - daily.Deaths),
+            data: props.chartData.map((daily) => daily.Confirmed - daily.Recovered - daily.Deaths),
             label: 'Active',
             borderColor: 'darkorange',
             fill: true,
