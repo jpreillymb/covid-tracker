@@ -1,6 +1,6 @@
-### COVID-19 Tracker & Data Vizualizer
+## COVID-19 Tracker & Data Vizualizer
 
-
+![Alt Text](/dashboard-demonstration.gif)
 
 
 
