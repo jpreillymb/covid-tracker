@@ -23,7 +23,7 @@ export const Header = (props) => {
             date: formatted_date
         }
     } else {
-        var country = props.data.Countries.find(element => element.Slug === props.currentCountry);
+        var country = props.chartData.slice(-1).pop()
         if (!country) {
             stats = {
                 Active: 0,
@@ -32,12 +32,13 @@ export const Header = (props) => {
                 date: "No date found"
             }
         } else {
+
             var country_date = new Date(country.Date);
             country_date = country_date.toLocaleDateString() + " at " + country_date.toLocaleTimeString()
             stats = {
-                Active: country.TotalConfirmed - country.TotalRecovered - country.TotalDeaths,
-                Recovered: country.TotalRecovered,
-                Deaths: country.TotalDeaths,
+                Active: country.Active,
+                Recovered: country.Recovered,
+                Deaths: country.Deaths,
                 date: country_date
             }
         }
@@ -46,46 +47,46 @@ export const Header = (props) => {
     var state = {
         labels: ['Active', 'Recovered', 'Deaths'],
         datasets: [
-          {
-            label: 'COVID-19 Cases',
-            backgroundColor: [
-                'darkorange',
-                'mediumseagreen',
-                'orangered'
-            ],
-            hoverBackgroundColor: [
-                'darkorange',
-                'mediumseagreen',
-                'orangered'
-            ],
-            data: [stats.Active, stats.Recovered, stats.Deaths]
-          }
+            {
+                label: 'COVID-19 Cases',
+                backgroundColor: [
+                    'darkorange',
+                    'mediumseagreen',
+                    'orangered'
+                ],
+                hoverBackgroundColor: [
+                    'darkorange',
+                    'mediumseagreen',
+                    'orangered'
+                ],
+                data: [stats.Active, stats.Recovered, stats.Deaths]
+            }
         ]
     }
 
     return (
         <div className="header">
-    
+
             <div className="outline">
                 <Pie
                     data={state}
                     options={{
                         responsive: false,
-                        title:{
-                        display:false,
-                        text:'COVID-19 Cases',
-                        fontSize:20
+                        title: {
+                            display: false,
+                            text: 'COVID-19 Cases',
+                            fontSize: 20
                         },
-                        legend:{
-                        display:false,
-                        position:'top'
+                        legend: {
+                            display: false,
+                            position: 'top'
                         },
                         cutoutPercentage: 60,
                     }}
                 />
             </div>
-            <img 
-                className="covid-logo" 
+            <img
+                className="covid-logo"
                 src='covid19icon.png'
                 title='covid-19 icon'
                 alt=""
@@ -97,11 +98,12 @@ export const Header = (props) => {
 const mapStateToProps = (state) => ({
     data: state.info.data,
     loadingStats: state.info.loadingStats,
-    currentCountry: state.currentCountry.current
+    currentCountry: state.currentCountry.current,
+    chartData: state.info.chartData
 })
 
 const mapDispatchToProps = {
-    
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

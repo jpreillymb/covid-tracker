@@ -18,7 +18,7 @@ export const CovidChart = (props) => {
 
   if (!props.loadingStats && props.currentCountry === "Global") {
     const state = {
-      labels: ['Infected', 'Recovered', 'Deaths'],
+      labels: ['Active', 'Recovered', 'Deaths'],
       datasets: [
         {
           label: 'COVID CASES',
@@ -41,47 +41,48 @@ export const CovidChart = (props) => {
       <Bar
         data={state}
         options={{
-            legend:{
-              display: false
-            }
+          legend: {
+            display: false
+          }
         }}
       />
     );
     chart = barChart1;
-    } else if (!props.loadingChart && props.chartData.length === 1) {
-        const state = {
-            labels: ['Infected', 'Recovered', 'Deaths'],
-            datasets: [
-              {
-                label: 'COVID-19 Cases',
-                backgroundColor: [
-                  'darkorange',
-                  'mediumseagreen',
-                  'orangered',
-                ],
-                hoverBackgroundColor: [
-                  'darkorange',
-                  'mediumseagreen',
-                  'orangered',
-                ],
-                data: [props.chartData[0].Confirmed - props.chartData[0].Recovered - props.chartData[0].Deaths, props.chartData[0].Recovered, props.chartData[0].Deaths],
-              },
-            ],
-          };
-      
-          var barChart2 = (
-            <Bar
-              data={state}
-              options={{
-                legend:{
-                    display: false
-                }
-            }}
-            />
-          );
-          chart = barChart2;
+  } else if (!props.loadingChart && props.chartData.length === 1) {
 
-  } else if (!props.loadingChart && (props.currentCountry !== "Global")){
+    const state = {
+      labels: ['Active', 'Recovered', 'Deaths'],
+      datasets: [
+        {
+          label: 'COVID-19 Cases',
+          backgroundColor: [
+            'darkorange',
+            'mediumseagreen',
+            'orangered',
+          ],
+          hoverBackgroundColor: [
+            'darkorange',
+            'mediumseagreen',
+            'orangered',
+          ],
+          data: [props.chartData[0].Confirmed - props.chartData[0].Recovered - props.chartData[0].Deaths, props.chartData[0].Recovered, props.chartData[0].Deaths],
+        },
+      ],
+    };
+
+    var barChart2 = (
+      <Bar
+        data={state}
+        options={{
+          legend: {
+            display: false
+          }
+        }}
+      />
+    );
+    chart = barChart2;
+
+  } else if (!props.loadingChart && (props.currentCountry !== "Global")) {
     var lineChart = (
       <Line
         data={{
@@ -116,7 +117,7 @@ export const CovidChart = (props) => {
 
   return (
     <Card className="chart-container">
-      { chart }
+      {chart}
     </Card>
   );
 };

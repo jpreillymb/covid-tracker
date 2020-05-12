@@ -9,7 +9,7 @@ const TopStats = (props) => {
 
     useEffect(() => {
         props.fetchStats()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     var stats = {}
@@ -30,7 +30,7 @@ const TopStats = (props) => {
             date: formatted_date
         }
     } else {
-        var country = props.data.Countries.find(element => element.Slug === props.currentCountry);
+        var country = props.chartData.slice(-1).pop()
         if (!country) {
             stats = {
                 Active: 0,
@@ -41,10 +41,11 @@ const TopStats = (props) => {
         } else {
             var country_date = new Date(country.Date);
             country_date = country_date.toLocaleDateString() + " at " + country_date.toLocaleTimeString()
+
             stats = {
-                Active: country.TotalConfirmed - country.TotalRecovered - country.TotalDeaths,
-                Recovered: country.TotalRecovered,
-                Deaths: country.TotalDeaths,
+                Active: country.Active,
+                Recovered: country.Recovered,
+                Deaths: country.Deaths,
                 date: country_date
             }
         }
@@ -56,7 +57,7 @@ const TopStats = (props) => {
                 <Card>
                     <CardContent>
                         <Typography className="orange" gutterBottom> Active </Typography>
-                        <Typography variant="h5"> 
+                        <Typography variant="h5">
                             <CountUp
                                 start={0}
                                 end={stats.Active}
@@ -72,10 +73,10 @@ const TopStats = (props) => {
                 <Card>
                     <CardContent>
                         <Typography className="green" gutterBottom> Recovered </Typography>
-                        <Typography variant="h5"> 
+                        <Typography variant="h5">
                             <CountUp
                                 start={0}
-                                end={stats.Recovered} 
+                                end={stats.Recovered}
                                 duration={3}
                                 separator=','
                             />
@@ -88,10 +89,10 @@ const TopStats = (props) => {
                 <Card>
                     <CardContent>
                         <Typography className="red" gutterBottom> Deaths </Typography>
-                        <Typography variant="h5"> 
+                        <Typography variant="h5">
                             <CountUp
                                 start={0}
-                                end={stats.Deaths} 
+                                end={stats.Deaths}
                                 duration={3}
                                 separator=','
                             />
@@ -107,7 +108,8 @@ const TopStats = (props) => {
 const mapStateToProps = (state) => ({
     data: state.info.data,
     loadingStats: state.info.loadingStats,
-    currentCountry: state.currentCountry.current
+    currentCountry: state.currentCountry.current,
+    chartData: state.info.chartData
 })
 
 const mapDispatchToProps = dispatch => {
